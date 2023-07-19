@@ -6,6 +6,10 @@
 </head>
 <body>
 <h1> {{day|title}} Workout</h1>
+{% if workout_text is not None%}
 <h2>{{workout_text}}</h2>
+{%else%}
+<p>There is no workout for this day yet</p>
+{%endif%}
 </body>
 </html>

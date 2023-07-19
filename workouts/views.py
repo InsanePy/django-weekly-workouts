@@ -10,17 +10,15 @@ days = {
     "wednesday": "Thighs",
     "thursday": "Back",
     "friday": "Abs",
-    "saturday": "Triceps"
+    "saturday": None
 }
 
+
 def index(request):
-    list_items = ""
-    for day in days:
-        capitalized_day = day.capitalize()
-        response_path = reverse("day-workout", args=[day])
-        list_items += f"<li><a href=\"{response_path}\">{capitalized_day}</a></li>"
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    days_list = list(days.keys())
+    return render(request, "workouts/index.html", {
+        "days_list": days_list
+    })
 
 def workout_by_day_in_number(request, day):
     days_list = list(days.keys())
@@ -28,6 +26,7 @@ def workout_by_day_in_number(request, day):
     redirect_path = reverse("day-workout", args=[redirect_day])
     return HttpResponseRedirect(redirect_path)
 #   return HttpResponseRedirect("/workouts/" + redirect_day)
+
 
 def workout(request, day):
     try:
