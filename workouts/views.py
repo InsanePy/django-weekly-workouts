@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseRedirect,HttpResponseNotFound
+from django.http import Http404,HttpResponseRedirect,HttpResponseNotFound
 from django.urls import reverse
 # Create your views here.
 
@@ -36,4 +36,4 @@ def workout(request, day):
             "workout_text": workout_text
         })
     except:
-        return HttpResponseNotFound("<h1>This day is not supported</h1>")
+        raise Http404()

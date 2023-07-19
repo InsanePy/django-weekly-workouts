@@ -1,4 +1,9 @@
 {% extends "base.html"%}
+{% load static%}
+{% block css_files %}
+<link rel="stylesheet" href="{% static "workouts/workout.css" %}">
+<link rel="stylesheet" href="{% static "workouts/includes/header.css" %}">
+{% endblock %}
 {% block page_title %}{{ day|title }}{% endblock %}
 {% block content %}
 {% include "workouts/includes/header.html" %}
@@ -6,6 +11,6 @@
 {% if workout_text is not None%}
 <h2>{{workout_text}}</h2>
 {%else%}
-<p>There is no workout for this day yet</p>
+<p class="fallback">There is no workout for this day yet</p>
 {%endif%}
 {% endblock %}
