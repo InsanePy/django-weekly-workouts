@@ -32,7 +32,9 @@ def workout_by_day_in_number(request, day):
 def workout(request, day):
     try:
         workout_text = days[day]
-        response_data = f"<h1>{workout_text}</h1>"
-        return HttpResponse(response_data)
+        return render(request, "workouts/workout.html", {
+            "day": day,
+            "workout_text": workout_text
+        })
     except:
         return HttpResponseNotFound("<h1>This day is not supported</h1>")
