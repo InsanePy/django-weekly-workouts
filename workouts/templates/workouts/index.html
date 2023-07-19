@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>All Days</title>
-</head>
-<body>
+{% extends "base.html"%}
+{% block page_title %}All Days{% endblock %}
+{% block content %}
+{% include "workouts/includes/header.html" %}
 <ul>
-{% for day in days_list %}
-<li><a href="{% url 'day-workout' day %}"> {{day|title}} </a></li>
-{% endfor %}
+    {% for day in days_list %}
+    <li><a href="{% url 'day-workout' day %}"> {{day|title}} </a></li>
+    {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}

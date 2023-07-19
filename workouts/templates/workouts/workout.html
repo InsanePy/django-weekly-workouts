@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Workout</title>
-</head>
-<body>
+{% extends "base.html"%}
+{% block page_title %}{{ day|title }}{% endblock %}
+{% block content %}
+{% include "workouts/includes/header.html" %}
 <h1> {{day|title}} Workout</h1>
 {% if workout_text is not None%}
 <h2>{{workout_text}}</h2>
 {%else%}
 <p>There is no workout for this day yet</p>
 {%endif%}
-</body>
-</html>
+{% endblock %}
